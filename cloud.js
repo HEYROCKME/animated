@@ -43,8 +43,12 @@ function Particle(x, y, directionX, directionY, size, color) {
 Particle.prototype.draw = function () {
   ctx.beginPath();
   ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+  // ctx.fillRect(this.x, this.y, this.size, this.size);
   ctx.fillStyle = this.color;
   ctx.fill();
+  ctx.strokeStyle = "white";
+  ctx.lineWidth = 4;
+  ctx.stroke();
 };
 
 Particle.prototype.update = function () {
@@ -70,6 +74,7 @@ Particle.prototype.update = function () {
   } else if (this.size > minSize) {
     this.size -= 0.1;
   }
+
   if (this.size < 0) {
     this.size = 0;
   }
@@ -110,6 +115,7 @@ window.addEventListener("resize", () => {
 //   mouse.x = null;
 //   mouse.y = null;
 // }, 1000);
+
 // console.log(particleArray);
 // const particle1 = new Particle(100, 100, 1, 1, 20, "white");
 // console.log(particle1);
